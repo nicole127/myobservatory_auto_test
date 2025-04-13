@@ -1,5 +1,0 @@
-appium-python-client
-pytest
-behave
-requests
-allure-pytest

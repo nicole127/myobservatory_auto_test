@@ -12,10 +12,9 @@ class ForecastPage(BasePage):
         self.find_element(self.roll_box)
         # 滚动到第day_offset天（根据content-desc定位）
         target_date = (datetime.now()+timedelta(days=day_offset)).strftime('%-m月%-d日')
-        element = self.find_element((AppiumBy.ANDROID_UIAUTOMATOR,
+        day_forecast = self.find_element((AppiumBy.ANDROID_UIAUTOMATOR,
             f'new UiScrollable(new UiSelector().scrollable(true))'
             f'.scrollIntoView(new UiSelector().descriptionContains("{target_date}"))')
         )
-        print(element.get_attribute("content-desc"))  # 输出该日期的完整天气信息
-        return element.get_attribute("content-desc")
+        return day_forecast
 

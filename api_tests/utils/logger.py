@@ -1,10 +1,15 @@
 import logging
+import os
 
 
 def setup_logger():
     # 日志记录器logger
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
+    # 日志文件目录
+    log_dir = os.path.dirname('logs/test.log')
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
     # 文件处理器，将日志写入文件
     file_handler = logging.FileHandler('logs/test.log')
     file_handler.setLevel(logging.INFO)

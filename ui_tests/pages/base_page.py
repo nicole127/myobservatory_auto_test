@@ -2,7 +2,6 @@ from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import  expected_conditions as EC
-import logging
 
 
 class BasePage():
@@ -29,9 +28,6 @@ class BasePage():
             return WebDriverWait(self.driver, timeout).until(custom_condition)
         else:
             raise ValueError(f"Unsupported locator type: {type(locator)}")
-        # return WebDriverWait(self.driver, timeout).until(
-        #     EC.presence_of_element_located(locator)
-        # )
 
     def click(self, locator, timeout=10):
         f'Clicking on element with locator:{locator}'
@@ -39,9 +35,3 @@ class BasePage():
             EC.element_to_be_clickable(locator)
         )
         element.click()
-
-    def get_text(self, locator, timeout=10):
-        element = self.find_element(locator, timeout)
-        text = element.text
-        f"Got text: '{text}' from element with locator: {locator}"
-        return text

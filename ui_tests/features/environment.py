@@ -6,12 +6,12 @@ def before_scenario(context, scenario):
     options = AppiumOptions()
     options.load_capabilities({
         "platformName": "Android",
-        "appium:platformVersion": "15",
-        "appium:deviceName": "cc14d7f0",
-        "appium:appPackage": "hko.MyObservatory_v1_0",
-        "appium:appActivity": "hko.MyObservatory_v1_0/.AgreementPage",
-        "appium:automationName": "UiAutomator2",
-        "appium:noReset": False
+        "platformVersion": "15",
+        "deviceName": "cc14d7f0",
+        "appPackage": "hko.MyObservatory_v1_0",
+        "appActivity": "hko.MyObservatory_v1_0/.AgreementPage",
+        "automationName": "UiAutomator2",
+        "noReset": False
     })
 
     context.driver = webdriver.Remote("http://localhost:4723", options=options)
