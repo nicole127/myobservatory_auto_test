@@ -25,6 +25,6 @@ class TestForecastAPI:
         8   # 8 days later
     ])
     def test_relative_humidity_format(self, api_client, day_offset):
-        """Extract the relative humidity(e,g,60-85%) for the day after day_offset days"""
+        """Extract the relative humidity(e,g,60-85%) after day_offset days"""
         relative_humidity = api_client.get_relative_humidity_by_index(day_offset)
         assert '-' in relative_humidity and '%' in relative_humidity

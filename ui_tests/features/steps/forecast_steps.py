@@ -65,9 +65,9 @@ def navigate_to_9day_forecast(context):
         raise
 
 
-@then(u"check the {day_offset}th day\'s weather forecast")
+@then("Check the forecast after {day_offset} days")
 def check_9day_forecast(context, day_offset):
-    """Check the 9th day's weather forecast"""
+    """Check the forecast after {day_offset} days"""
     try:
         day_forecast = context.forecast_page.get_day_forecast(int(day_offset))
         assert day_forecast

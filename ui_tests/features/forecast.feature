@@ -5,7 +5,7 @@ Feature: MyObservatory App UI 9-Day Forecast Test
     And deny notification and location permission
     And close the pop-up if exists
     And navigate to the 9-day forecast screen
-    Then check the <day_offset>th day's weather forecast
+    Then Check the forecast after <day_offset> days
     Examples:
       | day_offset |
       | 1          |
