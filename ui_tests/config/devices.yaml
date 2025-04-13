@@ -1,0 +1,8 @@
+android_device:
+  platformName: "Android"
+  platformVersion: "15"
+  deviceName: "cc14d7f0"
+  appPackage: "hko.MyObservatory_v1_0"
+  appActivity: "hko.MyObservatory_v1_0/.AgreementPage"
+  automationName: "UiAutomator2"
+  noReset: False

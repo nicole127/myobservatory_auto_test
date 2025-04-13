@@ -3,3 +3,5 @@ pytest
 behave
 selenium
 behave-html-formatter
+pyyaml
+allure-behave

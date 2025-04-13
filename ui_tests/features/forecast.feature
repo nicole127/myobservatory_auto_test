@@ -8,4 +8,6 @@ Feature: MyObservatory App UI 9-Day Forecast Test
     Then check the <day_offset>th day's weather forecast
     Examples:
       | day_offset |
+      | 1          |
+      | 5          |
       | 8          |

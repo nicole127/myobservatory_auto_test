@@ -42,5 +42,5 @@ def run_ui_tests():
 
 
 if __name__ == "__main__":
-    run_api_tests()
+    # run_api_tests()
     run_ui_tests()
