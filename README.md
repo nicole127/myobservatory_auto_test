@@ -1,8 +1,8 @@
-- # 项目介绍
+# 项目介绍
+collapsed:: true
 	- 本项目针对香港天文台官方应用 ​**MyObservatory**​ 的 ​**9日天气预报功能**​ 进行自动化测试，采用 ​**分层设计**， ​**UI测试**​ 和 ​**API测试**​ 完全解耦，独立运行，互不影响
 - # ​ 项目架构
 	- ## ​ Task 1：UI自动化测试 (`ui_tests/`)​ ​
-	  collapsed:: true
 		- ### ​技术栈
 		  collapsed:: true
 			- **编程语言**：`Python`
@@ -12,8 +12,7 @@
 			- ​**报告生成**​：`Allure`（可视化测试报告）
 		- ### 项目架构
 		  collapsed:: true
-			-
-			  ```
+			- ```
 			  myobservatory_tests/
 			  ├── ui_tests/					# UI测试
 			  │   ├── features/				# BDD
@@ -49,8 +48,7 @@
 					- 所有定位器按照页面集中管理
 			- **Behave行为驱动**：使用自然语言描述测试场景，提高可读性
 				- **步骤定义**：`forecast.feature`，关键字`Scenario Outline`结合`Example`实现数据驱动测试
-					-
-					  ```Gherkin
+					- ```Gherkin
 					  Feature: MyObservatory App UI 9-Day Forecast Test
 					    Scenario Outline: Launch the app and check the forecasts for different dates
 					      ......
@@ -70,16 +68,14 @@
 			- ✅ 检查 ​**第day天的天气数据**​ 是否正确显示，day参数化配置如1、5、9
 		- ### 运行测试
 		  collapsed:: true
-			-
-			  ```bash
+			- ```bash
 			  # 安装依赖
 			  pip instaill -r requirements.txt
 			  # 运行测试
 			  python run_test.py
 			  ```
-		-
+		
 	- ## Task 2：API自动化测试（`api_tests/`）
-	  collapsed:: true
 		- ### 技术栈
 		  collapsed:: true
 			- **编程语言**：`Python`
@@ -88,8 +84,7 @@
 			- **报告生成**：`pytest-html`
 		- ### 项目架构
 		  collapsed:: true
-			-
-			  ```Markdown
+			- ```Markdown
 			  myobservatory_tests/
 			  ├── api_tests/					# API测试
 			  │   ├── tests/					# 测试用例
@@ -109,9 +104,8 @@
 		  collapsed:: true
 			- #### 测试层 (`tests/`)​
 				- 定义共享夹具`@pytest.fixture`：`api_client`初始化API客户端
-				- 参数化
-				-
-				  ```python
+				- 数据驱动测试：`@pytest.mark.parametrize`
+				- ```python
 				  @pytest.mark.parametrize("day_offset", [
 				    2,  # Day after tomorrow
 				    8   # 8 days later
@@ -130,39 +124,35 @@
 			- ✅ 提取 ​**target_date的相对湿度**​（如`60-85%`）并校验格式，target_date可配置化
 		- ### 运行测试
 		  collapsed:: true
-			-
-			  ```ba#
+			- ```ba# 安装依赖
 			  pip instaill -r requirements.txt
 			  # 运行测试
 			  pytest
 			  py
 			  ```
-		-
+		
 - # 安装指南
+  collapsed:: true
 	- ### 步骤1：克隆代码
-		-
-		  ```bash
+		- ```bash
 		  git clone https://github.com/yourusername/myobservatory_tests.git
 		  cd myobservatory_tests
 		  ```
 	- ### 步骤2：创建虚拟环境
-		-
-		  ```bash
+		- ```bash
 		  python -m venv .venv
 		  source .venv/bin/activate  # Linux/Mac
 		  .\.venv\Scripts\activate   # Windows
 		  ```
 	- ### 步骤3：安装依赖
-		-
-		  ```bash
+		- ```bash
 		  # 安装ui_tests依赖
 		  pip install -r ui_tests/requirements.txt
 		  # 安装api_tests依赖
 		  pip install -r api_tests/requirements.txt
 		  ```
 	- ### 步骤4：运行测试
-		-
-		  ```bash
+		- ```bash
 		  # 运行ui_tests
 		  cd ui_tests && python run_tests.py
 		  # 运行api_tests
@@ -171,29 +161,12 @@
 	- ### 步骤5：查看报告
 		- ui_tests：`ui_tests/reports`
 		- api_tests：`api_tests/reports`
-	-
-	-
-	-
-	-
-	-
-	  ```bash
-	  # 1. 运行UI测试
-	  cd ui_tests && python run_tests.py
-	  
-	  # 2. 运行API测试
-	  cd api_tests && pytest
-	  ```
-	-
-	-
--
--
--
--
+	
 - # 时间花费
+  collapsed:: true
 	- 环境调试：1.5小时
 	- 框架设计：1小时
 	- 代码实现：4小时
 	- 测试与调试：0.5小时
 	- 文档编写：1小时
 	- 总计：约8小时
-
