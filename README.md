@@ -110,20 +110,21 @@
 				- `logger.py`​：提供标准化日志记录
 		- ### 测试范围​
 			- ✅ 调用 ​**香港天文台官方API**​ 获取9日天气预报数据
-			- ✅ 验证 ​**HTTP状态码**​ 和 ​**响应结构**​
+			- ✅ 验证 ​**HTTP状态码**
+			- ✅ 验证 ​​**响应结构** 和 **响应数据**​ 
+			- ✅ 验证 ​​**每一天的天气数据**
 			- ✅ 提取 ​**target_date的相对湿度**​（如`60-85%`）并校验格式，target_date可配置化
 		- ### 运行测试
 			- ```ba# 安装依赖
 			  pip instaill -r requirements.txt
 			  # 运行测试
 			  pytest
-			  py
 			  ```
 		
 - # 安装指南
 	- ### 步骤1：克隆代码
 		- ```bash
-		  git clone https://github.com/yourusername/myobservatory_tests.git
+		  git clone $repo_path
 		  cd myobservatory_tests
 		  ```
 	- ### 步骤2：创建虚拟环境
