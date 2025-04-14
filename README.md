@@ -1,17 +1,14 @@
 # 项目介绍
-collapsed:: true
 	- 本项目针对香港天文台官方应用 ​**MyObservatory**​ 的 ​**9日天气预报功能**​ 进行自动化测试，采用 ​**分层设计**， ​**UI测试**​ 和 ​**API测试**​ 完全解耦，独立运行，互不影响
 - # ​ 项目架构
 	- ## ​ Task 1：UI自动化测试 (`ui_tests/`)​ ​
 		- ### ​技术栈
-		  collapsed:: true
 			- **编程语言**：`Python`
 			- ​**测试框架**​：`Behave`（行为驱动开发，BDD）
 			- ​**自动化工具**​：`Appium`（移动端自动化测试）
 			- ​**设计模式**​：`Page Object Model (POM)`，提高代码可维护性
 			- ​**报告生成**​：`Allure`（可视化测试报告）
 		- ### 项目架构
-		  collapsed:: true
 			- ```
 			  myobservatory_tests/
 			  ├── ui_tests/					# UI测试
@@ -38,7 +35,6 @@ collapsed:: true
 			  └── run_tests.py				# 执行测试的脚本文件（执行behave，生成Allure报告）
 			  ```
 		- ### 设计思路
-		  collapsed:: true
 			- **Page Object模式**：将每个页面封装为类，元素定位和操作与测试逻辑分离
 				- **基类设计**：`BaseObject`结合显示等待封装元素定位、元素点击、截图等操作
 				- **页面类继承**：`AgreementPage`、`MainPage`、`PopupPage`、`ForecastPage`继承`BaseObject`
@@ -63,11 +59,9 @@ collapsed:: true
 				- **环境初始化**：`environment.py`，定义前置操作启动设备、后置操作关闭设备
 			- **多设备支持**：通过配置文件`devices.yaml`支持不同设备测试
 		- ### 测试范围
-		  collapsed:: true
 			- ✅ 验证 ​**9天预报**​ 的UI展示
 			- ✅ 检查 ​**第day天的天气数据**​ 是否正确显示，day参数化配置如1、5、9
 		- ### 运行测试
-		  collapsed:: true
 			- ```bash
 			  # 安装依赖
 			  pip instaill -r requirements.txt
@@ -77,13 +71,11 @@ collapsed:: true
 		
 	- ## Task 2：API自动化测试（`api_tests/`）
 		- ### 技术栈
-		  collapsed:: true
 			- **编程语言**：`Python`
 			- **测试框架**：`pytest`
 			- **HTTP请求库**：`requests`
 			- **报告生成**：`pytest-html`
 		- ### 项目架构
-		  collapsed:: true
 			- ```Markdown
 			  myobservatory_tests/
 			  ├── api_tests/					# API测试
@@ -101,7 +93,6 @@ collapsed:: true
 			  └── README.md					# 项目说明文档
 			  ```
 		- ### 设计思路
-		  collapsed:: true
 			- #### 测试层 (`tests/`)​
 				- 定义共享夹具`@pytest.fixture`：`api_client`初始化API客户端
 				- 数据驱动测试：`@pytest.mark.parametrize`
@@ -118,12 +109,10 @@ collapsed:: true
 				- `api_client.py`：封装HTTP请求和操作
 				- `logger.py`​：提供标准化日志记录
 		- ### 测试范围​
-		  collapsed:: true
 			- ✅ 调用 ​**香港天文台官方API**​ 获取9日天气预报数据
 			- ✅ 验证 ​**HTTP状态码**​ 和 ​**响应结构**​
 			- ✅ 提取 ​**target_date的相对湿度**​（如`60-85%`）并校验格式，target_date可配置化
 		- ### 运行测试
-		  collapsed:: true
 			- ```ba# 安装依赖
 			  pip instaill -r requirements.txt
 			  # 运行测试
@@ -132,7 +121,6 @@ collapsed:: true
 			  ```
 		
 - # 安装指南
-  collapsed:: true
 	- ### 步骤1：克隆代码
 		- ```bash
 		  git clone https://github.com/yourusername/myobservatory_tests.git
@@ -163,7 +151,6 @@ collapsed:: true
 		- api_tests：`api_tests/reports`
 	
 - # 时间花费
-  collapsed:: true
 	- 环境调试：1.5小时
 	- 框架设计：1小时
 	- 代码实现：4小时
