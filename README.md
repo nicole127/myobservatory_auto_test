@@ -10,7 +10,6 @@
 			- ​**报告生成**​：`Allure`（可视化测试报告）
 		- ### 项目架构
 			- ```
-			  myobservatory_tests/
 			  ├── ui_tests/					# UI测试
 			  │   ├── features/				# BDD
 			  │   │   ├── steps/				# 步骤实现
@@ -77,7 +76,6 @@
 			- **报告生成**：`pytest-html`
 		- ### 项目架构
 			- ```Markdown
-			  myobservatory_tests/
 			  ├── api_tests/					# API测试
 			  │   ├── tests/					# 测试用例
 			  │   │   └── test_forecat_api.py	# API测试用例
