@@ -65,17 +65,17 @@ def navigate_to_9day_forecast(context):
         raise
 
 
-@then("Check the forecast after {day_offset} days")
-def check_9day_forecast(context, day_offset):
-    """Check the forecast after {day_offset} days"""
+@then("Check the {day}th day's weather")
+def check_9day_forecast(context, day):
+    """Check the {day}th day's weather"""
     try:
-        day_forecast = context.forecast_page.get_day_forecast(int(day_offset))
+        day_forecast = context.forecast_page.get_day_forecast(int(day))
         assert day_forecast
         desc = day_forecast.get_attribute('content-desc')
         assert desc
-        logger.info(f"Check the {day_offset}th day's weather forecast successfully, desc:{desc}")
+        logger.info(f"Check the {day}th day's weather forecast successfully, desc:{desc}")
     except AssertionError as e:
-        logger.error(f"Failed to get the {day_offset}th day's weather forecast: {str(e)}")
+        logger.error(f"Failed to get the {day}th day's weather forecast: {str(e)}")
     except Exception as e:
-        logger.error(f"An error occurred while checking the {day_offset}th day's weather forecast: {str(e)}")
+        logger.error(f"An error occurred while checking the {day}th day's weather forecast: {str(e)}")
         raise
