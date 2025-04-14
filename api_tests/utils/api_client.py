@@ -12,7 +12,7 @@ class ForecastAPIClient:
         self.base_url = APIConfig.BASE_URL
 
     def get_9day_forecast(self):
-        """获取9日天气预报"""
+        """获取9天天气预报"""
         response = self.session.get(
             f"{self.base_url}{APIConfig.FORECAST_ENDPOINT}",
             timeout=APIConfig.TIMEOUT
@@ -20,26 +20,42 @@ class ForecastAPIClient:
         response.raise_for_status()
         return response
 
-    def get_relative_humidity_by_index(self, day_offset):
-        """按索引获取湿度数据，获取day_offset天后的湿度数据"""
-        target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y%m%d")
+    def get_general_situation(self):
+        """获取天气概况"""
         try:
-            if day_offset < 0 or day_offset>8:
+            data = self.get_9day_forecast().json()
+            assert "general_situation" in data, logger.error("Missing general_situation in response")
+            general_situation = data["general_situation"]
+            assert isinstance(general_situation, str) and len(general_situation) > 0, logger.error("Invalid general_situation format")
+            logger.info(f"Successfully extract general situation: {general_situation}")
+            return general_situation
+        except Exception as e:
+            logger.error(f"Extract general situation failed: {e}")
+
+    def get_forecast_detail(self):
+        """获取9天天气预报详情"""
+        try:
+            data = self.get_9day_forecast().json()
+            assert "forecast_detail" in data, logger.error("Missing forecast_detail in response")
+            forecast_detail = data["forecast_detail"]
+            assert isinstance(forecast_detail, list) and len(forecast_detail) == 9, logger.error("Invalid forecast_detail format")
+            logger.info("Successfully extract forecast detail")
+            return forecast_detail
+        except Exception as e:
+            logger.error(f"Extract forecast detail failed: {e}")
+
+    def get_forecast_detail_for_target_date(self, day_offset):
+        """按索引获取day_offset天后的天气数据"""
+        target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y%m%d")
+
+        try:
+            if day_offset < 1 or day_offset>9:
                 raise ValueError("day_offset must be between 0 and 8")
             data = self.get_9day_forecast().json()
             assert "forecast_detail" in data, logger.error("Missing forecast_detail in response")
-            relative_humidity = None
-
             for forecast in data["forecast_detail"]:
                 if forecast["forecast_date"] == target_date:
-                    min_rh = forecast["min_rh"]
-                    max_rh = forecast["max_rh"]
-                    relative_humidity = f"{min_rh}-{max_rh}%"
-                    if min_rh and 0 <= min_rh <= 100 and max_rh and 0 <= max_rh <= 100:
-                        relative_humidity = f"{min_rh}-{max_rh}%"
-                        logger.info(f"Successfully extract relative humidity {relative_humidity} for the {target_date}")
-                        return relative_humidity
-            assert relative_humidity, logger.error(f"Extract relative humidity for the {target_date} failed")
-
+                    logger.info(f"Successfully extract forecast detail for {target_date}: {forecast}")
+                    return forecast
         except Exception as e:
-            logger.error(f"Extract relative humidity for the {target_date} failed:{e}")
+            logger.error(f"Extract forecast detail for {target_date} failed: {e}")

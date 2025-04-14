@@ -2,3 +2,5 @@
 logs/
 .DS_Store
 .idea/
+/ui_tests/reports
+/api_tests/reports

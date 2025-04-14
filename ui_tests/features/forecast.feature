@@ -8,6 +8,6 @@ Feature: MyObservatory App UI 9-Day Forecast Test
     Then Check the <day>th day's weather
     Examples:
       | day |
-      | 1   |
+      | 2   |
       | 5   |
-      | 9   |
+      | 8   |
